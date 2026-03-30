@@ -1,6 +1,6 @@
 import datetime
 
-# --- 1. DATA (7-Day Menu) ---
+# 1. DATA (7-Day Menu) 
 mess_menu = {
     "Monday": {"Breakfast": "Poha & Tea", "Lunch": "Rajma Chawal", "Dinner": "Paneer Butter Masala"},
     "Tuesday": {"Breakfast": "Aloo Paratha", "Lunch": "Kadhi Pakoda", "Dinner": "Egg Curry"},
@@ -11,7 +11,7 @@ mess_menu = {
     "Sunday": {"Breakfast": "Chole Bhature", "Lunch": "Shahi Paneer & Naan", "Dinner": "Malai Kofta"}
 }
 
-# --- 2. FUNCTIONS ---
+# 2. FUNCTIONS 
 
 def view_menu():
     user_day = input("\nWhich day's menu? (e.g., Monday): ").strip().capitalize()
@@ -46,7 +46,7 @@ def view_total():
     except FileNotFoundError:
         print("\nNo expenses logged yet!")
 
-# --- 3. MAIN LOOP ---
+# 3. MAIN LOOP 
 
 def main():
     while True:
