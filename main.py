@@ -1,6 +1,6 @@
 import datetime
 
-# 1. DATA (7-Day Menu) 
+# --- 1. DATA (7-Day Menu) ---
 mess_menu = {
     "Monday": {"Breakfast": "Poha & Tea", "Lunch": "Rajma Chawal", "Dinner": "Paneer Butter Masala"},
     "Tuesday": {"Breakfast": "Aloo Paratha", "Lunch": "Kadhi Pakoda", "Dinner": "Egg Curry"},
@@ -11,53 +11,57 @@ mess_menu = {
     "Sunday": {"Breakfast": "Chole Bhature", "Lunch": "Shahi Paneer & Naan", "Dinner": "Malai Kofta"}
 }
 
-#  2. FUNCTIONS 
+# --- 2. FUNCTIONS ---
 
 def view_menu():
-    """Asks the user for the day and displays that day's menu."""
-    # Ask the user for the day
-    user_day = input("\nWhich day's menu do you want to see? (e.g., Monday): ").strip().capitalize()
-    
-    print(f"\n--- {user_day} Mess Schedule ---")
-    
-    # Check if the day exists in our dictionary
-    today_meals = mess_menu.get(user_day)
-    
-    if today_meals:
-        print(f"B-Fast: {today_meals['Breakfast']}")
-        print(f"Lunch:  {today_meals['Lunch']}")
-        print(f"Dinner: {today_meals['Dinner']}")
+    user_day = input("\nWhich day's menu? (e.g., Monday): ").strip().capitalize()
+    today = mess_menu.get(user_day)
+    if today:
+        print(f"--- {user_day} Schedule ---")
+        print(f"B-Fast: {today['Breakfast']}\nLunch: {today['Lunch']}\nDinner: {today['Dinner']}")
     else:
-        print("Error: Please enter a valid day of the week.")
+        print("Invalid day entered.")
 
 def log_expense():
-    """Logs food spending to a text file."""
-    item = input("What did you buy? ")
-    price = input("How much did it cost? ")
-    with open("expenses.txt", "a") as f:
-        f.write(f"{item}: Rs.{price}\n")
-    print("Logged! Data saved to expenses.txt.")
+    item = input("Item name: ")
+    price = input("Price (Numbers only): ")
+    if price.isdigit():
+        with open("expenses.txt", "a") as f:
+            f.write(f"{item}:{price}\n") # Format: Item:Price
+        print("Expense Saved!")
+    else:
+        print("Please enter a valid numeric price.")
 
-# 3. MAIN LOOP 
+def view_total():
+    """Reads the file and calculates the total sum."""
+    total = 0
+    try:
+        with open("expenses.txt", "r") as f:
+            for line in f:
+                # Split the line at the colon and take the second part (the price)
+                parts = line.strip().split(":")
+                if len(parts) == 2:
+                    total += int(parts[1])
+        print(f"\n💰 YOUR TOTAL SPENDING: Rs. {total}")
+    except FileNotFoundError:
+        print("\nNo expenses logged yet!")
+
+# --- 3. MAIN LOOP ---
 
 def main():
     while True:
         print("\n===== CAMPUS CRATE: VIT BHOPAL =====")
-        print("1. View Mess Menu (Select Day)")
-        print("2. Log Outside Food Expense")
-        print("3. Exit Program")
+        print("1. View Mess Menu")
+        print("2. Log New Expense")
+        print("3. View Total Monthly Spending")
+        print("4. Exit")
         
-        choice = input("\nEnter choice (1-3): ")
-        
-        if choice == '1':
-            view_menu()
-        elif choice == '2':
-            log_expense()
-        elif choice == '3':
-            print("Exiting... Good luck with your studies!")
-            break
-        else:
-            print("Invalid input. Please choose 1, 2, or 3.")
+        choice = input("\nEnter choice (1-4): ")
+        if choice == '1': view_menu()
+        elif choice == '2': log_expense()
+        elif choice == '3': view_total()
+        elif choice == '4': break
+        else: print("Invalid choice.")
 
 if __name__ == "__main__":
     main()
