@@ -1,0 +1,32 @@
+1. Problem Statement
+Living in a hostel at VIT Bhopal, students face two main daily hurdles:
+
+Information Gap: Forgetting the mess menu and missing preferred meals.
+
+Financial Tracking: Losing track of small, frequent spends on canteen snacks or "Poha-Jalebi" runs, leading to a budget crisis at the end of the month.
+
+2. Proposed Solution
+Campus Crate is a Python-based utility that acts as a digital companion. It allows students to:
+
+Manually query the mess menu for any day of the week.
+
+Log "extra" expenses into a permanent text file to track spending habits.
+
+3. Course Concepts Applied
+Nested Dictionaries: Used for structured data storage of the 7-day menu.
+
+String Methods: Used .capitalize() and .strip() to ensure user input matches dictionary keys regardless of case.
+
+File I/O: Used open(file, 'a') to append data to expenses.txt, ensuring data persistence.
+
+Functions & Modularity: Code is organized into logical blocks (view_menu, log_expense) for better readability.
+
+4. Key Decisions & Challenges
+Decision: I chose a CLI (Command Line Interface) because it is lightweight and runs instantly on any system without needing heavy graphics.
+
+Challenge: Initially, the program was automatic, but I realized students want to plan ahead. I modified the code to ask the user for the day, giving them more control.
+
+Challenge: Handling "KeyErrors" if a user typed "monday" instead of "Monday." I solved this using the .capitalize() method.
+
+5. Learning & Reflection
+This project taught me how to bridge the gap between "classroom Python" and "useful Python." I learned that version control (GitHub) is essential for tracking progress and that simple file handling can solve big data-tracking problems.
