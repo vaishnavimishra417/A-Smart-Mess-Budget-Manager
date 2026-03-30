@@ -2,9 +2,7 @@ import datetime
 
 # 1. Course Concept: Dictionaries for Data Storage
 mess_menu = {
-    "Monday": {"Breakfast": "Poha & Tea", "Lunch": "Rajma Chawal", "Dinner": "Paneer Butter Masala"},
-    "Tuesday": {"Breakfast": "Aloo Paratha", "Lunch": "Kadahi Pakoda", "Dinner": "Chicken/Egg Curry"},
-    # Add more days as needed...
+    
 }
 
 def view_menu():
