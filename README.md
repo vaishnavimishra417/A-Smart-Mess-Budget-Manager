@@ -18,3 +18,11 @@ Campus Crate is a Python-based utility designed for students at VIT Bhopal to ma
 
 ### Usage
 Follow the on-screen menu prompts to either view the menu (Option 1) or log an expense (Option 2).
+
+Navigate:
+
+Press 1 to check a specific day's menu.
+
+Press 2 to record a purchase (e.g., "Coffee: 20").
+
+Press 3 to close the program.
